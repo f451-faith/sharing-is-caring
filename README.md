@@ -1,17 +1,14 @@
-# Sharing is caring
+# Sharing is Caring
 
-Date: December 8-10
-F451: Domitille Debret and Quentin Creuzet 
-
-https://monoskop.org/log/?cat=25
-
-https://www.are.na/f451/sharing-is-caring-u-fm7arazbo
+- Date: December 8-10
+- F451: Domitille Debret and Quentin Creuzet 
+- Monoskop: [https://monoskop.org/log/?cat=25](https://monoskop.org/log/?cat=25)
+- Are.na: [https://www.are.na/f451/sharing-is-caring-u-fm7arazbo](https://www.are.na/f451/sharing-is-caring-u-fm7arazbo)
 
 ---
 
 > "*Sometimes it is a conscious choice not to delegate particular jobs to the computer, and sometimes it is just a habit. Most often it is not more than a click or two that uncover your general purpose architecture."* 
 Lialina, O., 2012. Turing Complete User. [online] [Available here](http://www.contemporary-home-computing.org/turing-complete-user/)
-> 
 
 **Introduction** 
 
@@ -55,12 +52,12 @@ December 10
 
 **Readings** 
 
-- Migros-Kulturprozent, Dominik Landwehr (Hg.), 2015 Public Domain, Edition Digital Culture 3
+- Migros-Kulturprozent, Dominik Landwehr (Hg.), 2015, *Public Domain*, Edition Digital Culture 3
 - B42, 2018. Back Office 2 Graphic Design And Digital Practices. Editions B42. [Available here](http://www.revue-backoffice.com/numeros/02-penser-classer-representer)-
-- Lialina, O., 2012. Turing Complete User. [online] [Available here](http://www.contemporary-home-computing.org/turing-complete-user/)
+- Lialina, O., 2012. *Turing Complete User*. [Available here](http://www.contemporary-home-computing.org/turing-complete-user/)
 - *Caps Lock, How Capitalism took hold of graphic design and how to escape from it*, Ruben Pater, Valiz, 2021: particularly the chapter "The Designer as Hacker"
-- Aaron Swartz, *2008,* Guerilla Open Access Manifesto.  [online]  [Available here](https://ia800605.us.archive.org/15/items/GuerillaOpenAccessManifesto/Goamjuly2008.pdf)
-- Georges Perec, 1985,  Thoughts of Sorts
+- Aaron Swartz, 2008, *Guerilla Open Access Manifesto*. [Available here](https://ia800605.us.archive.org/15/items/GuerillaOpenAccessManifesto/Goamjuly2008.pdf)
+- Georges Perec, 1985, *Thoughts of Sorts*
 
 **Mixed references**
 
@@ -70,5 +67,3 @@ December 10
 - [https://www.cca.qc.ca/en/articles/69294/is-a-database-a-museum](https://www.cca.qc.ca/en/articles/69294/is-a-database-a-museum)
 - [https://www.are.na/mindy-seu/spreadsheet-directories](https://www.are.na/mindy-seu/spreadsheet-directories)
 - [https://www.joostgrootens.nl/archive/1399_museum_index](https://www.joostgrootens.nl/archive/1399_museum_index)
-- [https://docs.tronalddump.io/](https://docs.tronalddump.io/)
-
