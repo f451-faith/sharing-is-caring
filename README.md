@@ -7,6 +7,11 @@
 
 ---
 
+- Original JSON: [https://monoskop.org/log/?cat=25&json=1&count=300](https://monoskop.org/log/?cat=25&json=1&count=300)
+- Script that transforms the original JSON: [https://codesandbox.io/s/workshop-sharing-is-caring-vugnz?file=/script.js](https://codesandbox.io/s/workshop-sharing-is-caring-vugnz?file=/script.js)
+
+---
+
 > "*Sometimes it is a conscious choice not to delegate particular jobs to the computer, and sometimes it is just a habit. Most often it is not more than a click or two that uncover your general purpose architecture."* 
 Lialina, O., 2012. Turing Complete User. [online] [Available here](http://www.contemporary-home-computing.org/turing-complete-user/)
 
