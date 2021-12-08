@@ -24,6 +24,8 @@ https://my-url.com/api/books/
 | Name | Type | Description |  
 |--|--|--|
 | **q** | string | Any keyword or phrase that searches against title, editor, book description. |
+| **georges_perec** | string | Filter by matches of titles not containing the letter e  |
+
 
 **Example Request**
 
