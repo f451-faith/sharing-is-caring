@@ -3,6 +3,9 @@
 Date: December 8-10
 F451: Domitille Debret and Quentin Creuzet 
 
+https://monoskop.org/log/?cat=25
+https://www.are.na/f451/sharing-is-caring-u-fm7arazbo
+
 ---
 
 > "*Sometimes it is a conscious choice not to delegate particular jobs to the computer, and sometimes it is just a habit. Most often it is not more than a click or two that uncover your general purpose architecture."* 
@@ -67,3 +70,4 @@ December 10
 - [https://www.are.na/mindy-seu/spreadsheet-directories](https://www.are.na/mindy-seu/spreadsheet-directories)
 - [https://www.joostgrootens.nl/archive/1399_museum_index](https://www.joostgrootens.nl/archive/1399_museum_index)
 - [https://docs.tronalddump.io/](https://docs.tronalddump.io/)
+
