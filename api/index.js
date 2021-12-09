@@ -38,23 +38,49 @@ function getAllBooks(req, res) {
 function getFilteredData(data, parameters) {
   Object.entries(parameters).forEach(([key, value]) => {
     if (key == "q") data = filterDataByQ(data, value);
-    if (key == "city") data = filterDataByCity(data, value);
+    // if (key == "city") data = filterDataByCity(data, value);
     if (key == "editor") data = filterDataByEditor(data, value);
     if (key == "min_year") data = filterDataByMinYear(data, value);
     if (key == "max_year") data = filterDataByMaxYear(data, value);
+    if (key == "sort_by_pages") data = sortDataByPages(data, value);
   });
+  return data;
+}
+
+function sortDataByPages(data, direction) {
+  if (direction == "asc") {
+    data = data.sort(function (bookA, bookB) {
+      return bookA["numberOfPages"] - bookB["numberOfPages"];
+    });
+  } else if (direction == "desc") {
+    data = data.sort(function (bookA, bookB) {
+      return bookB["numberOfPages"] - bookA["numberOfPages"];
+    });
+  }
   return data;
 }
 
 function filterDataByQ(data, value) {
   data = data.filter(function (book) {
-    if (book.title) {
-      return book.title.toLowerCase().includes(value.toLowerCase());
+    // Transform our object into an array of values
+    var values = Object.values(book);
+    // Check which values include the string we search for
+    values = values.filter(function (val) {
+      if (Array.isArray(val)) val = val.join(", ");
+      if (Number.isInteger(val)) val = val.toString();
+      return val.toLowerCase().includes(value.toLowerCase());
+    });
+    // If there's any value that include the string we search for, keep the item
+    if (values.length > 0) {
+      return true;
+    } else {
+      return false;
     }
   });
   return data;
 }
 
+/*
 function filterDataByCity(data, value) {
   data = data.filter(function (book) {
     // Check if the book has an ISBN
@@ -84,6 +110,7 @@ function filterDataByCity(data, value) {
 
   return data;
 }
+*/
 
 function filterDataByEditor(data, value) {
   data = data.filter(function (book) {
