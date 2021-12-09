@@ -38,7 +38,7 @@ function getAllBooks(req, res) {
 function getFilteredData(data, parameters) {
   Object.entries(parameters).forEach(([key, value]) => {
     if (key == "q") data = filterDataByQ(data, value);
-    if (key == "author") data = filterDataByAuthor(data, value);
+    if (key == "city") data = filterDataByCity(data, value);
     if (key == "editor") data = filterDataByEditor(data, value);
     if (key == "min_year") data = filterDataByMinYear(data, value);
     if (key == "max_year") data = filterDataByMaxYear(data, value);
@@ -55,33 +55,27 @@ function filterDataByQ(data, value) {
   return data;
 }
 
-function filterDataByAuthor(data, value) {
+function filterDataByCity(data, value) {
   data = data.filter(function (book) {
     // Check if the book has an ISBN
     if (book.isbn) {
       // Create the URL for the Google API where the info of the book are
-      var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + book.isbn;
+      var url = "https://openlibrary.org/isbn/" + book.isbn + ".json";
       // Fetch the data from this URL
       fetch(url)
         .then(function (response) {
           // We transform the data to JSON
-          return response.json();
+          if (response.status != 404) return response.json();
         })
         .then(function (json) {
-          // We go to the items array
-          var items = json.items;
-          // We check if there's any item
-          if (items.length > 0) {
-            // We get the first item
-            var item = items[0];
-            // We go to the authors
-            var authors = item["volumeInfo"]["authors"];
-            // We check if there's any author
-            if (authors.length > 0) {
-              // Transform array of authors into a string
-              var authorsString = authors.join(", ");
+          if (json) {
+            var cities = json["publish_places"];
+            // We check if there's any publish places
+            if (cities) {
+              // Transform array of publish places into a string
+              var citiesString = cities.join(", ");
               // Check if the author's string includes the value
-              return authorsString.toLowerCase().includes(value.toLowerCase());
+              return citiesString.toLowerCase().includes(value.toLowerCase());
             }
           }
         });
