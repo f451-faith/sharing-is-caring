@@ -56,31 +56,39 @@ function filterDataByQ(data, value) {
 }
 
 function filterDataByAuthor(data, value) {
-  var author = null;
-
-  // Getting the author through the Google API with the ISBN
-  if (book.isbn) {
-    var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + book.isbn;
-    fetch(url)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (json) {
-        var items = json.items;
-        if (items.length > 0) {
-          var item = items[0];
-          var authors = item["volumeInfo"]["authors"];
-          if (authors.length > 0) {
-            data = data.filter(function (book) {
-              if (author) {
-                return author.toLowerCase().includes(value.toLowerCase());
-              }
-            });
-            return data;
+  data = data.filter(function (book) {
+    // Check if the book has an ISBN
+    if (book.isbn) {
+      // Create the URL for the Google API where the info of the book are
+      var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + book.isbn;
+      // Fetch the data from this URL
+      fetch(url)
+        .then(function (response) {
+          // We transform the data to JSON
+          return response.json();
+        })
+        .then(function (json) {
+          // We go to the items array
+          var items = json.items;
+          // We check if there's any item
+          if (items.length > 0) {
+            // We get the first item
+            var item = items[0];
+            // We go to the authors
+            var authors = item["volumeInfo"]["authors"];
+            // We check if there's any author
+            if (authors.length > 0) {
+              // Transform array of authors into a string
+              var authorsString = authors.join(", ");
+              // Check if the author's string includes the value
+              return authorsString.toLowerCase().includes(value.toLowerCase());
+            }
           }
-        }
-      });
-  }
+        });
+    }
+  });
+
+  return data;
 }
 
 function filterDataByEditor(data, value) {
