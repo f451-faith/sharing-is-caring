@@ -6,7 +6,7 @@
 - Are.na: [https://www.are.na/f451/sharing-is-caring-u-fm7arazbo](https://www.are.na/f451/sharing-is-caring-u-fm7arazbo)
 - Spreadsheet: https://docs.google.com/spreadsheets/d/1wzNzon48tDtyDRxWjofsmVGJ9piaYaFuWOdNUZK0dw0/edit?usp=sharing
 - Url Encoder : https://www.urlencoder.org/
-- Node JS : https://nodejs.org/en/
+- Install Node JS (Recommended for most users) : https://nodejs.org/en/ 
 
 ---
 
