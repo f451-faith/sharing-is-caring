@@ -1,0 +1,15 @@
+{
+  "name": "sharing-is-caring",
+  "version": "1.0.0",
+  "description": "A boilerplate for a Node.js and Express API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "F451",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
