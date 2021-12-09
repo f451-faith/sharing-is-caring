@@ -38,6 +38,7 @@ function getAllBooks(req, res) {
 function getFilteredData(data, parameters) {
   Object.entries(parameters).forEach(([key, value]) => {
     if (key == "q") data = filterDataByQ(data, value);
+    if (key == "author") data = filterDataByAuthor(data, value);
     if (key == "editor") data = filterDataByEditor(data, value);
     if (key == "min_year") data = filterDataByMinYear(data, value);
     if (key == "max_year") data = filterDataByMaxYear(data, value);
@@ -52,6 +53,34 @@ function filterDataByQ(data, value) {
     }
   });
   return data;
+}
+
+function filterDataByAuthor(data, value) {
+  var author = null;
+
+  // Getting the author through the Google API with the ISBN
+  if (book.isbn) {
+    var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + book.isbn;
+    fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (json) {
+        var items = json.items;
+        if (items.length > 0) {
+          var item = items[0];
+          var authors = item["volumeInfo"]["authors"];
+          if (authors.length > 0) {
+            data = data.filter(function (book) {
+              if (author) {
+                return author.toLowerCase().includes(value.toLowerCase());
+              }
+            });
+            return data;
+          }
+        }
+      });
+  }
 }
 
 function filterDataByEditor(data, value) {
