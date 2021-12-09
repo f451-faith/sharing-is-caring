@@ -26,7 +26,37 @@ LIST OF FUNCTIONS
 */
 
 function getAllBooks(req, res) {
-  res.send(data);
+  if (Object.keys(req.query).length) {
+    // Check if there's anything on the parameters
+    const filteredData = getFilteredData(data, req.query);
+    res.send(filteredData);
+  } else {
+    res.send(data);
+  }
+}
+
+function getFilteredData(data, parameters) {
+  Object.entries(parameters).forEach(([key, value]) => {
+    if (key == "q") data = filterDataByQ(data, value);
+    if (key == "author") data = filterDataByAuthor(data, value);
+    if (key == "min_year") data = filterDataByMinYear(data, value);
+  });
+  return data;
+}
+
+function filterDataByQ(data, value) {
+  data = data.filter((book) => book.title.toLowerCase().includes(value.toLowerCase()));
+  return data;
+}
+
+function filterDataByAuthor(data, value) {
+  // Filter the data with the value
+  return data;
+}
+
+function filterDataByMinYear(data, value) {
+  // Filter the data with the value
+  return data;
 }
 
 function getSpecificBook(req, res) {
