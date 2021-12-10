@@ -4,7 +4,7 @@ GENERAL SETUP
 
 const fetch = require("node-fetch");
 const fs = require("fs");
-const dataFromJSON = JSON.parse(fs.readFileSync("../book.json"));
+const dataFromJSON = JSON.parse(fs.readFileSync("./book.json"));
 let data = dataFromJSON;
 
 const express = require("express");
