@@ -24,7 +24,19 @@ https://my-url.com/api/books/
 | Name | Type | Description |  
 |--|--|--|
 | **q** | string | Any keyword or phrase that searches against title, editor, book description. |
-| **georges_perec** | string | Filter by matches of titles not containing the letter e  |
+| **sort_by_title** | string | Sort magazine by title |
+| **sort_by_pages** |string| Sort magazine by page number |
+| **min_year** | integer | Filter by a minimum year |
+| **max_year** | integer | Filter by a maximum year |
+| **edtitor** | string |Filter by name of editor |
+| **sort_by_age** | integer | Sort by age of the book |
+| **min_book_age** | integer | Filter by minimum age of the book |
+| **title_colon** | boolean | Filter by colon mark presence in the title |
+| **post_cold_war** | string | The top level domain of the exhibition url |
+| **exhib_tld** | string | The top level domain of the exhibition url |
+| **exhib_country** | string | Filter by the country of the exhibition (using TLD) |
+| **publish_loc** | string | Filter by the place of publishing |
+| **single_editor** | boolean | Filter by the editor being multiple or a single one |
 
 
 **Example Request**
