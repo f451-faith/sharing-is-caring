@@ -41,7 +41,144 @@ function getFilteredData(data, parameters) {
     if (key == "min_year") data = filterDataByMinYear(data, value);
     if (key == "max_year") data = filterDataByMaxYear(data, value);
     if (key == "sort_by_pages") data = sortDataByPages(data, value);
+    if (key == "single_editor") data = checkIfSingleEditor(data, value);
+    if (key == "title_colon") data = filterDataByTitleColon(data, value);
+    if (key == "post_cold_war") data = filterDataByPostColdWar(data, value);
+    if (key == "sort_by_title") data = sortDataByTitle(data, value);
+    if (key == "exhib_country") data = filterDataByCountry(data, value);
+    if (key == "filter_tld") data = filterDataByTLD(data, value);
+    if (key == "publish_loc") data = filterDataByPublishingCity(data, value);
+    if (key == "min_book_age") data = filterDataByMinBookAge(data, value);
+    if (key == "sort_by_age") data = sortDataByAges(data, value);
   });
+  return data;
+}
+
+function filterDataByTLD(data, value) {
+  data = data.filter(function (book) {
+    if (book.exhibition) {
+      var url = new URL(book.exhibition);
+      var extension = url.hostname.split(".").pop();
+      return extension == value;
+    }
+  });
+  return data;
+}
+
+function filterDataByCountry(data, value) {
+  const extensions = JSON.parse(fs.readFileSync("./table_tld.json"));
+  data = data.filter(function (book) {
+    if (book.exhibition) {
+      var url = new URL(book.exhibition);
+      var extension = "." + url.hostname.split(".").pop();
+      var ext = extensions.find(function (e) {
+        return e["Name[7]"] == extension;
+      });
+      if (ext) {
+        var country = ext["Entity"];
+        return country.toLowerCase().includes(value.toLowerCase());
+      }
+    }
+  });
+  return data;
+}
+
+function sortDataByTitle(data, direction) {
+  if (direction == "asc") {
+    data = data.sort(function (bookA, bookB) {
+      return bookA.title.localeCompare(bookB.title);
+    });
+  } else if (direction == "desc") {
+    data = data.sort(function (bookA, bookB) {
+      return bookB.title.localeCompare(bookA.title);
+    });
+  }
+  return data;
+}
+
+function sortDataByAges(data, direction) {
+  var today = new Date();
+  var year = today.getFullYear();
+
+  data.forEach(function (book) {
+    book["age"] = year - book["year"];
+  });
+
+  if (direction == "asc") {
+    data = data.sort(function (bookA, bookB) {
+      return bookA["age"] - bookB["age"];
+    });
+  } else if (direction == "desc") {
+    data = data.sort(function (bookA, bookB) {
+      return bookB["age"] - bookA["age"];
+    });
+  }
+
+  return data;
+}
+
+function filterDataByPostColdWar(data, value) {
+  data = data.filter(function (book) {
+    if (book.year) {
+      return book.year > 2016;
+    }
+  });
+  return data;
+}
+
+function filterDataByPublishingCity(data, value) {
+  data = data.filter(function (book) {
+    if (book.publisher) {
+      var city = book.publisher.split(",")[1];
+      return city.toLowerCase().includes(value.toLowerCase());
+    }
+  });
+  return data;
+}
+
+function filterDataByMinBookAge(data, value) {
+  data = data.filter(function (book) {
+    if (book.year) {
+      var currentYear = new Date().getFullYear();
+      book.age = currentYear - book.year;
+      return currentYear - book.year <= value;
+    }
+  });
+  data = data.sort(function (bookA, bookB) {
+    return bookA.age - bookB.age;
+  });
+  return data;
+}
+
+function filterDataByTitleColon(data) {
+  data = data.filter(function (book) {
+    if (book.title) {
+      return book.title.includes(":");
+    }
+  });
+  return data;
+}
+
+function checkIfSingleEditor(data, value) {
+  data = data
+    .filter(function (book) {
+      return book.editor;
+    })
+    .filter(function (book) {
+      if (book.editor.toLowerCase().includes(", ") || book.editor.toLowerCase().includes(" and ")) {
+        if (value == "true") {
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        if (value == "true") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
   return data;
 }
 
