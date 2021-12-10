@@ -13,6 +13,7 @@
 
 - Original JSON: [https://monoskop.org/log/?cat=25&json=1&count=300](https://monoskop.org/log/?cat=25&json=1&count=300)
 - Script that transforms the original JSON: [https://codesandbox.io/s/workshop-sharing-is-caring-vugnz?file=/script.js](https://codesandbox.io/s/workshop-sharing-is-caring-vugnz?file=/script.js)
+- CodeSandbox: https://codesandbox.io/s/sharing-is-caring-api-t583q
 
 ---
 
